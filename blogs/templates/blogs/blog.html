@@ -1,0 +1,34 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <h1>{{ blog.name }}</h1>
+  <p class="text-muted">@{{ blog.user.username }}</p>
+  <p>{{ blog.description }}</p>
+{% endblock page_header %}
+
+{% block content %}
+  {% for article in articles %}
+    <div class="card mb-3">
+      {% comment %} show a header only if the user is the blog author {% endcomment %}
+      {% if user == blog.user %}
+        <div class="card-header d-flex justify-content-between {% if article.published %}bg-dark text-white{% endif %}">
+          {% if article.published %}
+            Published
+          {% else %}
+            Draft
+          {% endif %}
+
+          <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ article.title }}</h4>
+          <small>{{ article.date_edited|date:'M d, Y G:i' }}</small>
+          <p class="card-text mb-3">
+            {{ article.preview }}
+          </p>
+          <a href="{% url 'blogs:article' article.id %}" class="btn btn-primary">Read Article</a>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endblock content %}

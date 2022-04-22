@@ -1,0 +1,15 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <h1 class="text-center mb-4">{{ article.blog.name }}</h1>
+  <h2 class="text-center">{{ article.title }}</h2>
+  <div class="d-flex flex-column justify-content-center">
+    <small class="text-center">
+      last updated {{ article.date_edited|date:'M d, Y G:i' }}
+    </small>
+  </div>
+{% endblock page_header %}
+
+{% block content %}
+<div class="mx-auto" style="max-width: 70ch;">{{ article.body|linebreaks }}</div>
+{% endblock content %}

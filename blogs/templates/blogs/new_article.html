@@ -1,0 +1,40 @@
+{% extends 'blogs/base.html' %}
+{% load bootstrap4 %}
+
+{% block html_head %}
+<script>
+  const getPublishedText = (status) => {
+    return status ? "Your article will appear on your profile, and live to the public." : "Your article will be saved as a draft, and visible only to you."
+  }
+  
+  $(function() {
+    const pubBox = $("#id_published");
+    const group = pubBox.closest(".form-group");
+    
+    const pubText = $('<p id="pubText" class="form-text text-muted"></p>');
+    pubText.text(getPublishedText(pubBox.prop("checked")));
+    group.append(pubText)
+
+    pubBox.on("click", function() {
+      console.log(pubBox.val())
+      pubText.text(getPublishedText(pubBox.prop("checked")));
+    })
+  })
+
+</script>
+{% endblock html_head %}
+
+{% block page_header %}
+  <h2>New Article</h2>
+{% endblock page_header %}
+
+{% block content %}
+  <form action="{% url 'blogs:new_article' %}" class="form" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+      <button class="btn btn-primary" name="submit">Create Article</button>
+    {% endbuttons %}
+  </form>
+{% endblock content %}

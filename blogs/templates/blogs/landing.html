@@ -1,0 +1,16 @@
+{# this template is the landing page for users that are not logged in #}
+
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <div class="jumbotron">
+    <h1 class="display-3">Simple, effective writing.</h1>
+    <p class="lead">
+      Simple, effective, no-fuss writing. Get bloggy with it.
+    </p>
+
+    <a href="{% url 'users:register' %}" role="button" class="btn btn-lg btn-primary">
+      Get started
+    </a>
+  </div>
+{% endblock page_header %}

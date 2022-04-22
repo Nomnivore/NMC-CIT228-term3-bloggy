@@ -1,0 +1,28 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <h2>Explore Blogs</h2>
+{% endblock page_header %}
+
+{% block content %}
+  {% for blog in blogs %}
+    <div class="card mb-2">
+      <p class="card-header">@{{ blog.user }}</p>
+      <div class="card-body">
+        <h4 class="card-title">{{ blog.name }}</h4>
+        <div class="card-text mb-3">{{ blog.description }}</div>
+        <a href="{% url 'blogs:blog' blog.id %}" class="btn btn-primary">View Blog</a>
+      </div>
+      <div class="card-footer text-muted">
+        {% with pub_count=blog.published_set.count %}
+          {{ pub_count }}
+          {% if pub_count == 1 %}
+            article
+          {% else %}
+            articles
+          {% endif %}
+        {% endwith %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock content %}
