@@ -2,8 +2,26 @@
 
 {% block page_header %}
   <h1>Hello, {{ user }}!</h1>
+  <p>Here are some things you can do...</p>
 {% endblock page_header %}
 
 {% block content %}
-  <p>This is the first visible content of the website.</p>
+  <ul>
+    <li>
+      <a href="{% url 'blogs:new_article' %}">Write a new article</a>
+    </li>
+    <li>
+      <a href="{% url 'blogs:blog' user.blog.id %}">View your blog</a>
+    </li>
+    <li>
+      <a href="{% url 'blogs:edit_blog' %}">Edit your blog info</a>
+    </li>
+    <li>
+      <a href="{% url 'blogs:blogs' %}">Browse all blogs</a>
+    </li>
+  </ul>
 {% endblock content %}
+
+{% block page_footer %}
+  {% include 'blogs/_definition.html' %}
+{% endblock page_footer %}

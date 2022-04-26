@@ -6,7 +6,7 @@
   <div class="jumbotron">
     <h1 class="display-3">Simple, effective writing.</h1>
     <p class="lead">
-      Simple, effective, no-fuss writing. Get bloggy with it.
+      Simple, effective, no-fuss writing. Get bloggy.
     </p>
 
     <a href="{% url 'users:register' %}" role="button" class="btn btn-lg btn-primary">
@@ -14,3 +14,7 @@
     </a>
   </div>
 {% endblock page_header %}
+
+{% block content %}
+  {% include 'blogs/_definition.html' %}
+{% endblock content %}

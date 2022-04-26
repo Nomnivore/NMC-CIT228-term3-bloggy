@@ -1,9 +1,9 @@
 {% extends 'blogs/base.html' %}
 
 {% block page_header %}
-  <h1 class="text-center mb-4">{{ article.blog.name }}</h1>
+<div class="d-flex flex-column justify-content-center">
+  <a role="heading" href="{% url 'blogs:blog' article.blog.id %}" class="h1 text-dark text-center mb-4">{{ article.blog.name }}</a>
   <h2 class="text-center">{{ article.title }}</h2>
-  <div class="d-flex flex-column justify-content-center">
     <small class="text-center">
       last updated {{ article.date_edited|date:'M d, Y G:i' }}
     </small>
@@ -13,3 +13,13 @@
 {% block content %}
 <div class="mx-auto" style="max-width: 70ch;">{{ article.body|linebreaks }}</div>
 {% endblock content %}
+
+{% block page_footer %}
+  <div class="d-flex justify-content-end">
+    <div class="d-flex flex-column small">
+      <span>written by <span class="font-weight-bold">@{{ article.blog.user }}</span></span>
+      <span>originally on {{ article.date_created|date:'M d, Y G:i' }}</span>
+      <span>last updated {{ article.date_edited|date:'M d, Y G:i' }}</span>
+    </div>
+  </div>
+{% endblock page_footer %}

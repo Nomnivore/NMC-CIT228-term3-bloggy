@@ -9,7 +9,7 @@ urlpatterns = [
     
     # blogs
     path('blogs', views.blogs, name='blogs'),
-    path('blog/edit', views.edit_blog, name='edit_blog'),
+    path('edit', views.edit_blog, name='edit_blog'),
     path('blog/<int:blog_id>', views.blog, name='blog'),
     
     # articles
