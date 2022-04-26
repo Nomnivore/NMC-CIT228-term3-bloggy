@@ -15,4 +15,5 @@ urlpatterns = [
     # articles
     path('a/new', views.new_article, name='new_article'),
     path('a/<int:article_id>', views.article, name='article'),
+    path('a/<int:article_id>/edit', views.edit_article, name='edit_article'),
 ]

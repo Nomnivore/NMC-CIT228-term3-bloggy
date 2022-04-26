@@ -29,5 +29,12 @@
 {% endblock page_header %}
 
 {% block content %}
-  form
+  <form action="{% url 'blogs:edit_article' article.id %}" class="form" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+      <button class="btn btn-primary" name="submit">Save Changes</button>
+    {% endbuttons %}
+  </form>
 {% endblock content %}

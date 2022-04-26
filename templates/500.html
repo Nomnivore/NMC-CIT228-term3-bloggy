@@ -1,0 +1,10 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <h2>Error 500</h2>
+{% endblock page_header %}
+
+{% block content %}
+  <p>There has been an internal server error.</p>
+  <a href="{% url 'blogs:index' %}" role="button" class="btn btn-primary">Return Home</a>
+{% endblock content %}

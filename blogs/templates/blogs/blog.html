@@ -21,7 +21,7 @@
             Draft
           {% endif %}
 
-          <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+          <a href="{% url 'blogs:edit_article' article.id %}" class="btn btn-sm btn-secondary">Edit</a>
         </div>
       {% endif %}
         <div class="card-body">
