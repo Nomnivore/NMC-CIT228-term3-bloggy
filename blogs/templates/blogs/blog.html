@@ -33,6 +33,8 @@
           {% comment %} <a href="{% url 'blogs:article' article.id %}" class="btn btn-primary">Read Article</a> {% endcomment %}
         </div>
     </div>
+  {% empty %}
+    <p>This blog has not published any articles yet.</p>
   {% endfor %}
 {% endblock content %}
 
