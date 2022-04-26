@@ -54,7 +54,7 @@ def blog(request, blog_id):
 def blogs(request):
     """Show all blogs"""
     blogs = Blog.objects.all()
-    
+
     context = {'blogs': blogs}
     return render(request, 'blogs/blogs.html', context)
 
@@ -93,13 +93,15 @@ def article(request, article_id):
     context = {'article': article}
     return render(request, 'blogs/article.html', context)
 
+
+@login_required
 def edit_article(request, article_id):
     """Edit a single article"""
     article = get_object_or_404(Article, id=article_id)
-    
+
     if not request.user == article.blog.user:
         raise Http404
-    
+
     if request.method != 'POST':
         # GET request, pre-fill form with current details
         form = ArticleForm(instance=article)
@@ -109,6 +111,6 @@ def edit_article(request, article_id):
         if form.is_valid():
             form.save()
             return redirect('blogs:article', article_id=article.id)
-    
+
     context = {'form': form, 'article': article}
     return render(request, 'blogs/edit_article.html', context)

@@ -23,7 +23,7 @@ class Blog(models.Model):
 
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_blog(sender, instance, created, **kwargs):
     default_name = f"{instance.username}'s Blog"
     Blog.objects.get_or_create(
         user=instance, defaults={'name': default_name})
