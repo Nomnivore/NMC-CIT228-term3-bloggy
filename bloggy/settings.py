@@ -142,3 +142,7 @@ LOGIN_URL = 'users:login'
 # Heroku settings
 import django_heroku
 django_heroku.settings(locals())
+
+# Heroku SSL
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
